@@ -11,9 +11,7 @@ export default {
   transform: {
     '^.+\\.tsx?$': [
       'ts-jest',
-      {
-        diagnostics: { ignoreCodes: [1343] },
-      },
+      { diagnostics: { ignoreCodes: [1343] } },
     ],
   },
 }

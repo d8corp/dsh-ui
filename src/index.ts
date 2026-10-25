@@ -1,5 +1,7 @@
 export type { DshModuleLoader, FactoryOptions, ModuleRequire } from './factory'
 export { factory } from './factory'
+export { Fragment, jsxDEV } from './jsx-dev-runtime'
+export { jsx, jsxs } from './jsx-runtime'
 export * from './ui'
 export * from './utils/countdown'
 export { ensureStyles, STYLE_ATTRIBUTE } from './utils/ensureStyles'

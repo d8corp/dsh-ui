@@ -10,9 +10,28 @@ The library shares the React instance loaded by DSH, injects its stylesheet once
 npm install @d8corp/dsh-ui
 ```
 
-React is provided by the DSH host at runtime, so it is an optional peer dependency and is never bundled into the plugin.
+React is provided by the DSH host at runtime. Neither the library nor its JSX runtime imports React directly, so it stays out of the plugin bundle.
+
+## JSX
+
+JSX is compiled by your plugin's build. Point the automatic runtime at this package so elements are created through the host React instance:
+
+```json
+{
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "jsxImportSource": "@d8corp/dsh-ui"
+  }
+}
+```
+
+Development builds using `"jsx": "react-jsxdev"` resolve `@d8corp/dsh-ui/jsx-dev-runtime` automatically. The runtime never imports React itself: it calls `getReact()` when an element is created, so hooks, context and the renderer stay on the single DSH instance.
+
+The classic runtime is not supported for plugin JSX; if your build cannot use the automatic runtime, create elements with `getReact().createElement` instead.
 
 ## Plugin client
+
+The example is client-side TSX compiled with the JSX settings above.
 
 ```tsx
 import { factory } from '@d8corp/dsh-ui'
@@ -74,13 +93,19 @@ All styles use the `dsh-ui-` prefix and the DSH `--dsw-*` design tokens, so comp
 ## React access
 
 ```ts
-import { getReact, setReact } from '@d8corp/dsh-ui'
+import { getReact } from '@d8corp/dsh-ui'
 
-setReact(React)
 const React = getReact()
 ```
 
-`getReact()` throws a descriptive error until React has been supplied. Plugins normally never need to call `setReact()` because `factory` does it.
+`getReact()` throws a descriptive error until React has been supplied. Plugins normally never need to call `setReact()` because `factory` does it. Custom loaders and tests can supply the instance explicitly:
+
+```ts
+import * as React from 'react'
+import { setReact } from '@d8corp/dsh-ui'
+
+setReact(React)
+```
 
 ## Styling
 
