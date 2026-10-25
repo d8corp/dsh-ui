@@ -1,16 +1,17 @@
+import { classes } from 'html-classes'
+import type * as ReactTypes from 'react'
+
 import type { JSX } from '../../types'
 import { formatRemaining, tokenLevel } from '../../utils/countdown'
-import { cx } from '../../utils/cx'
 import { getReact } from '../../utils/react'
 
-export interface CountdownProps {
+export interface CountdownProps extends ReactTypes.DetailedHTMLProps<ReactTypes.HTMLAttributes<HTMLSpanElement>, HTMLSpanElement> {
   expiresAt: number | null
   onExpired?: () => void
-  className?: string
 }
 
 /** Live `mm:ss` / `h:mm:ss` timer for an expiry timestamp. */
-export function Countdown ({ expiresAt, onExpired, className }: CountdownProps): JSX.Element | null {
+export function Countdown ({ expiresAt, onExpired, className, ...props }: CountdownProps): JSX.Element | null {
   const React = getReact()
   const { useEffect, useRef, useState } = React
   const [now, setNow] = useState(() => Date.now())
@@ -41,7 +42,7 @@ export function Countdown ({ expiresAt, onExpired, className }: CountdownProps):
   const level = tokenLevel(remaining)
 
   return (
-    <span className={cx('dsh-ui-timer', 'dsh-ui-timer-' + level, className)}>
+    <span {...props} className={classes(['dsh-ui-timer', 'dsh-ui-timer-' + level, className])}>
       {formatRemaining(remaining)}
     </span>
   )

@@ -1,13 +1,12 @@
+import { classes } from 'html-classes'
 import type * as ReactTypes from 'react'
 
 import type { JSX } from '../../types'
-import { cx } from '../../utils/cx'
 
-export interface LoadingProps {
+export interface LoadingProps extends ReactTypes.DetailedHTMLProps<ReactTypes.HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
   text?: ReactTypes.ReactNode
-  className?: string
 }
 
-export function Loading ({ text = 'Loading…', className }: LoadingProps): JSX.Element {
-  return <div className={cx('dsh-ui-loading', className)}>{text}</div>
+export function Loading ({ text = 'Loading…', className, ...props }: LoadingProps): JSX.Element {
+  return <div {...props} className={classes(['dsh-ui-loading', className])}>{text}</div>
 }

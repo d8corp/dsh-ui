@@ -1,19 +1,18 @@
+import { classes } from 'html-classes'
 import type * as ReactTypes from 'react'
 
 import type { JSX } from '../../types'
-import { cx } from '../../utils/cx'
 
 export type StatusState = 'connected' | 'pending' | 'missing' | 'neutral'
 
-export interface StatusProps {
+export interface StatusProps extends ReactTypes.DetailedHTMLProps<ReactTypes.HTMLAttributes<HTMLSpanElement>, HTMLSpanElement> {
   state: StatusState
   label: ReactTypes.ReactNode
-  className?: string
 }
 
-export function Status ({ state, label, className }: StatusProps): JSX.Element {
+export function Status ({ state, label, className, ...props }: StatusProps): JSX.Element {
   return (
-    <span className={cx('dsh-ui-badge', 'dsh-ui-badge-' + state, className)}>
+    <span {...props} className={classes(['dsh-ui-badge', 'dsh-ui-badge-' + state, className])}>
       <span className='dsh-ui-dot' />
       {label}
     </span>

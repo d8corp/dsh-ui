@@ -1,33 +1,22 @@
+import { classes } from 'html-classes'
 import type * as ReactTypes from 'react'
 
 import type { JSX } from '../../types'
-import { cx } from '../../utils/cx'
 
-export interface FileInputProps {
+export interface FileInputProps extends Omit<ReactTypes.DetailedHTMLProps<ReactTypes.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>, 'type' | 'onChange'> {
   onChange: (event: ReactTypes.ChangeEvent<HTMLInputElement>) => void
-  accept?: string
-  disabled?: boolean
-  className?: string
-  id?: string
-  name?: string
 }
 
 export function FileInput ({
   onChange,
-  accept,
-  disabled,
   className,
-  id,
-  name,
+  ...props
 }: FileInputProps): JSX.Element {
   return (
     <input
-      className={cx('dsh-ui-file-input', className)}
+      {...props}
+      className={classes(['dsh-ui-file-input', className])}
       type='file'
-      accept={accept}
-      disabled={disabled}
-      id={id}
-      name={name}
       onChange={onChange}
     />
   )

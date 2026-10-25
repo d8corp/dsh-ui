@@ -1,13 +1,10 @@
+import { classes } from 'html-classes'
 import type * as ReactTypes from 'react'
 
 import type { JSX } from '../../types'
-import { cx } from '../../utils/cx'
 
-export interface SectionProps {
-  children?: ReactTypes.ReactNode
-  className?: string
-}
+export interface SectionProps extends ReactTypes.DetailedHTMLProps<ReactTypes.HTMLAttributes<HTMLDivElement>, HTMLDivElement> {}
 
-export function Section ({ children, className }: SectionProps): JSX.Element {
-  return <div className={cx('dsh-ui-section', className)}>{children}</div>
+export function Section ({ className, ...props }: SectionProps): JSX.Element {
+  return <div {...props} className={classes(['dsh-ui-section', className])} />
 }

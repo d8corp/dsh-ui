@@ -1,19 +1,18 @@
+import { classes } from 'html-classes'
 import type * as ReactTypes from 'react'
 
 import type { JSX } from '../../types'
-import { cx } from '../../utils/cx'
 
-export interface RowProps {
+export interface RowProps extends Omit<ReactTypes.DetailedHTMLProps<ReactTypes.HTMLAttributes<HTMLDivElement>, HTMLDivElement>, 'title'> {
   title: ReactTypes.ReactNode
   description?: ReactTypes.ReactNode
   control: ReactTypes.ReactNode
   badge?: ReactTypes.ReactNode
-  className?: string
 }
 
-export function Row ({ title, description, control, badge, className }: RowProps): JSX.Element {
+export function Row ({ title, description, control, badge, className, ...props }: RowProps): JSX.Element {
   return (
-    <div className={cx('dsh-ui-row', className)}>
+    <div {...props} className={classes(['dsh-ui-row', className])}>
       <div className='dsh-ui-row-text'>
         <div className='dsh-ui-row-title-row'>
           <span className='dsh-ui-row-title'>{title}</span>

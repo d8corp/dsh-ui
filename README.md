@@ -88,6 +88,8 @@ Any extra options (`inject`, `select`, etc.) are forwarded to the loader unchang
 | `Countdown` | `expiresAt`, `onExpired`, `className` |
 | `Loading` | `text`, `className` |
 
+Every component also accepts the native HTML attributes of its root element (`aria-*`, `id`, `style`, `onMouseEnter`, …) and merges `className` with its own classes.
+
 All styles use the `dsh-ui-` prefix and the DSH `--dsw-*` design tokens, so components follow the active DSH theme.
 
 ## React access
