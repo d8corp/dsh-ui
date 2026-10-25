@@ -1,7 +1,7 @@
+import { classes } from 'html-classes'
 import type * as ReactTypes from 'react'
 
 import type { JSX } from '../../types'
-import { cx } from '../../utils/cx'
 
 export type ButtonVariant = 'primary' | 'secondary'
 
@@ -18,7 +18,7 @@ export function Button ({
     <button
       type='button'
       {...props}
-      className={cx('dsh-ui-button', 'dsh-ui-button-' + variant, className)}
+      className={classes(['dsh-ui-button', 'dsh-ui-button-' + variant, className])}
     />
   )
 }

@@ -84,5 +84,8 @@
     "ts-jest": "^29.4.12",
     "typescript": "^6.0.3",
     "typescript-eslint": "^8.66.0"
+  },
+  "dependencies": {
+    "html-classes": "^2.0.2"
   }
 }
