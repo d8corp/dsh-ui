@@ -1,0 +1,78 @@
+{
+  "name": "@d8corp/dsh-ui",
+  "version": "0.0.1",
+  "description": "Reusable React UI components and client-module factory for DeepSeek Harness plugins.",
+  "type": "module",
+  "main": "index.mjs",
+  "module": "index.mjs",
+  "types": "index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "import": "./index.mjs",
+      "default": "./index.mjs"
+    },
+    "./package.json": "./package.json"
+  },
+  "author": "Mikhail Lysikov <d8corp@mail.ru>",
+  "license": "MIT",
+  "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/d8corp/dsh-ui.git"
+  },
+  "keywords": [
+    "DeepSeek",
+    "Harness",
+    "DSH",
+    "UI",
+    "React",
+    "components",
+    "plugin"
+  ],
+  "bugs": {
+    "url": "https://github.com/d8corp/dsh-ui/issues"
+  },
+  "homepage": "https://github.com/d8corp/dsh-ui",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build": "npm run build:styles && innetjs release -tc -lc -e",
+    "build:styles": "innetjs run buildEnv.ts -e",
+    "release": "npm run build:styles && innetjs release -p -tc -lc -e",
+    "test": "jest",
+    "lint": "eslint src --ext .ts,.tsx",
+    "lint:fix": "eslint src --ext .ts,.tsx --fix"
+  },
+  "peerDependencies": {
+    "react": ">=18.0.0"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@types/jest": "^30.0.0",
+    "@types/node": "^20.2.1",
+    "@types/react": "18.3.31",
+    "cssnano": "^5.1.15",
+    "eslint": "^9.39.5",
+    "eslint-import-resolver-typescript": "^4.4.5",
+    "eslint-plugin-import": "^2.32.0",
+    "eslint-plugin-jest": "^29.16.0",
+    "eslint-plugin-simple-import-sort": "^14.0.0",
+    "eslint-plugin-unused-imports": "^4.4.1",
+    "innetjs": "^4.0.0-beta.10",
+    "jest": "^30.4.2",
+    "jest-environment-jsdom": "^30.4.1",
+    "jest-util": "^29.5.0",
+    "neostandard": "^0.13.0",
+    "postcss": "^8.5.31",
+    "sass": "^1.106.1",
+    "ts-jest": "^29.4.12",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.66.0"
+  }
+}
