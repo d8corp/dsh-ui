@@ -1,7 +1,7 @@
 import type * as ReactTypes from 'react'
 
+import type { JSX } from '../../types'
 import { cx } from '../../utils/cx'
-import { getReact } from '../../utils/react'
 
 export interface RowProps {
   title: ReactTypes.ReactNode
@@ -11,9 +11,7 @@ export interface RowProps {
   className?: string
 }
 
-export function Row ({ title, description, control, badge, className }: RowProps) {
-  const React = getReact()
-
+export function Row ({ title, description, control, badge, className }: RowProps): JSX.Element {
   return (
     <div className={cx('dsh-ui-row', className)}>
       <div className='dsh-ui-row-text'>

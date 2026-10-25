@@ -1,15 +1,13 @@
 import type * as ReactTypes from 'react'
 
+import type { JSX } from '../../types'
 import { cx } from '../../utils/cx'
-import { getReact } from '../../utils/react'
 
 export interface SectionProps {
   children?: ReactTypes.ReactNode
   className?: string
 }
 
-export function Section ({ children, className }: SectionProps) {
-  const React = getReact()
-
+export function Section ({ children, className }: SectionProps): JSX.Element {
   return <div className={cx('dsh-ui-section', className)}>{children}</div>
 }

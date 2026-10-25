@@ -1,5 +1,5 @@
+import type { JSX } from '../../types'
 import { cx } from '../../utils/cx'
-import { getReact } from '../../utils/react'
 
 export type InputType = 'text' | 'email' | 'password' | 'url' | 'search' | 'tel' | 'number'
 
@@ -27,9 +27,7 @@ export function Input ({
   name,
   autoComplete,
   autoFocus,
-}: InputProps) {
-  const React = getReact()
-
+}: InputProps): JSX.Element {
   return (
     <input
       className={cx('dsh-ui-input', className)}

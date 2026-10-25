@@ -1,7 +1,7 @@
 import type * as ReactTypes from 'react'
 
+import type { JSX } from '../../types'
 import { cx } from '../../utils/cx'
-import { getReact } from '../../utils/react'
 
 export interface FileInputProps {
   onChange: (event: ReactTypes.ChangeEvent<HTMLInputElement>) => void
@@ -19,9 +19,7 @@ export function FileInput ({
   className,
   id,
   name,
-}: FileInputProps) {
-  const React = getReact()
-
+}: FileInputProps): JSX.Element {
   return (
     <input
       className={cx('dsh-ui-file-input', className)}

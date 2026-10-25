@@ -1,7 +1,7 @@
 import type * as ReactTypes from 'react'
 
+import type { JSX } from '../../types'
 import { cx } from '../../utils/cx'
-import { getReact } from '../../utils/react'
 
 export type NoticeKind = 'error' | 'success'
 
@@ -11,9 +11,7 @@ export interface NoticeProps {
   className?: string
 }
 
-export function Notice ({ kind, text, className }: NoticeProps) {
-  const React = getReact()
-
+export function Notice ({ kind, text, className }: NoticeProps): JSX.Element {
   return (
     <div className={cx('dsh-ui-notice', 'dsh-ui-notice-' + kind, className)}>
       {text}

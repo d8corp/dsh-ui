@@ -31,7 +31,7 @@ describe('components', () => {
       className: 'dsh-ui-button dsh-ui-button-primary',
       type: 'button',
     })
-    expect(tree.children).toEqual(['Save'])
+    expect(tree.props.children).toBe('Save')
   })
 
   it('passes input changes as values', () => {
@@ -64,11 +64,14 @@ describe('components', () => {
       control: 'control',
     }) as any
 
+    const text = tree.props.children[0]
+    const titleRow = text.props.children[0]
+
     expect(tree.props.className).toBe('dsh-ui-row')
-    expect(tree.children[0].props.className).toBe('dsh-ui-row-text')
-    expect(tree.children[0].children[0].props.className).toBe('dsh-ui-row-title-row')
-    expect(tree.children[0].children[1].props.className).toBe('dsh-ui-row-description')
-    expect(tree.children[1].props.className).toBe('dsh-ui-row-control')
+    expect(text.props.className).toBe('dsh-ui-row-text')
+    expect(titleRow.props.className).toBe('dsh-ui-row-title-row')
+    expect(text.props.children[1].props.className).toBe('dsh-ui-row-description')
+    expect(tree.props.children[1].props.className).toBe('dsh-ui-row-control')
   })
 
   it('renders status and notice variants', () => {
@@ -76,9 +79,10 @@ describe('components', () => {
     const notice = Notice({ kind: 'error', text: 'Failed' }) as any
 
     expect(status.props.className).toBe('dsh-ui-badge dsh-ui-badge-connected')
-    expect(status.children[0].props.className).toBe('dsh-ui-dot')
+    expect(status.props.children[0].props.className).toBe('dsh-ui-dot')
+    expect(status.props.children[1]).toBe('Ready')
     expect(notice.props.className).toBe('dsh-ui-notice dsh-ui-notice-error')
-    expect(notice.children).toEqual(['Failed'])
+    expect(notice.props.children).toBe('Failed')
   })
 
   it('renders section and loading wrappers', () => {
@@ -86,8 +90,8 @@ describe('components', () => {
     const loading = Loading({}) as any
 
     expect(section.props.className).toBe('dsh-ui-section')
-    expect(section.children).toEqual(['content'])
+    expect(section.props.children).toBe('content')
     expect(loading.props.className).toBe('dsh-ui-loading')
-    expect(loading.children).toEqual(['Loading…'])
+    expect(loading.props.children).toBe('Loading…')
   })
 })

@@ -2,19 +2,9 @@ import type * as ReactTypes from 'react'
 
 import { getReact } from './utils/react'
 
-export const Fragment = Symbol.for('react.fragment') as unknown as typeof ReactTypes.Fragment
+export type { JSX } from './types'
 
-export namespace JSX {
-  export type ElementType = ReactTypes.JSX.ElementType
-  export interface Element extends ReactTypes.JSX.Element {}
-  export interface ElementClass extends ReactTypes.JSX.ElementClass {}
-  export interface ElementAttributesProperty extends ReactTypes.JSX.ElementAttributesProperty {}
-  export interface ElementChildrenAttribute extends ReactTypes.JSX.ElementChildrenAttribute {}
-  export type LibraryManagedAttributes<C, P> = ReactTypes.JSX.LibraryManagedAttributes<C, P>
-  export interface IntrinsicAttributes extends ReactTypes.JSX.IntrinsicAttributes {}
-  export interface IntrinsicClassAttributes<T> extends ReactTypes.JSX.IntrinsicClassAttributes<T> {}
-  export interface IntrinsicElements extends ReactTypes.JSX.IntrinsicElements {}
-}
+export const Fragment = Symbol.for('react.fragment') as unknown as typeof ReactTypes.Fragment
 
 function createElement (type: ReactTypes.ElementType, props: unknown, key?: ReactTypes.Key | null): ReactTypes.ReactElement {
   const React = getReact()

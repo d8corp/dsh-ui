@@ -1,3 +1,4 @@
+import type { JSX } from '../../types'
 import { formatRemaining, tokenLevel } from '../../utils/countdown'
 import { cx } from '../../utils/cx'
 import { getReact } from '../../utils/react'
@@ -9,7 +10,7 @@ export interface CountdownProps {
 }
 
 /** Live `mm:ss` / `h:mm:ss` timer for an expiry timestamp. */
-export function Countdown ({ expiresAt, onExpired, className }: CountdownProps) {
+export function Countdown ({ expiresAt, onExpired, className }: CountdownProps): JSX.Element | null {
   const React = getReact()
   const { useEffect, useRef, useState } = React
   const [now, setNow] = useState(() => Date.now())
